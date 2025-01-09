@@ -2,8 +2,11 @@ def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
     num_words = get_num_words(text)
-    char_count = count_char(text)
+    dict_to_list = list(count_char(text))
+    print(f"{dict_to_list}")
+    dict_sorted = dict_to_list.sort(reverse=True, key=sort_on)
     print(f"{num_words} words found in the document")
+    print_report = report(dict_sorted)
 
 
 def get_num_words(text):
@@ -28,9 +31,11 @@ def count_char(text):
 def sort_on(dict):
     return dict["num"]
 
+#! Create a dictionary of dictionaries
 def report(sorted_dict):
     for c in sorted_dict:
         if c.isalpha():
+            print(f"{c} Is alpha")   
             
 
 main()
